@@ -26,8 +26,6 @@ public class WorldDebugger implements WorldInit
 			for(int i = 0; i < 30; i++)
 			{
 				box = new BoxEntity(700 + (i*32), 300 + (j*32), 32, 32);
-				box.setMass(2);
-				box.setGravity(Util.randomFloat(2) - 1);
 				world.addEntity(box);
 			}
 		}
