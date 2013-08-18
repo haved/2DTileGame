@@ -29,12 +29,12 @@ public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 	{
 		buttons = new GuiObjectButton[2];
 		
-		buttons[0] = new GuiObjectButton("New Game", "Gui;gui.png");
+		buttons[0] = new GuiObjectButton("New Game", "gui;gui.png");
 		buttons[0].setListener(this);
 		buttons[0].setBounds(new RectangleI(300, 300, 424, 40));
 		add(buttons[0]);
 		
-		buttons[1] = new GuiObjectButton("Load Game", "Gui;gui.png");
+		buttons[1] = new GuiObjectButton("Load Game", "gui;gui.png");
 		buttons[1].setListener(this);
 		buttons[1].setBounds(new RectangleI(300, 380, 424, 40));
 		add(buttons[1]);
