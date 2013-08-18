@@ -2,6 +2,8 @@ package me.engine.lib;
 
 public class InitializationInfo
 {
+	public static final String CONTENT = "bin/Content";
+	
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 640;
 	public static final boolean RESIZEABLE = false;
@@ -15,6 +17,8 @@ public class InitializationInfo
 	
 	public static final boolean VSYNC = true;
 	
+	
+	public String content = CONTENT;
 	
 	public int windowWidth = WINDOW_WIDTH;
 	public int windowHeight = WINDOW_HEIGHT;

@@ -3,6 +3,7 @@ package me.engine.core;
 import org.newdawn.slick.Color;
 
 import me.engine.screen.GuiScreen;
+import me.engine.asset.AssetLib;
 import me.engine.lib.DialogHelper;
 import me.engine.lib.InitializationInfo;
 import me.engine.lib.LogHelper;
@@ -31,6 +32,8 @@ public class MainCanvas
 		RenderHelper.initGL(info.resolutionX, info.resolutionY);
 		RenderEngine.init();
 		TextEngine.init();
+		
+		AssetLib.load(info.content);
 		
 		trySetGuiScreen(info.defaultGuiScreen);
 	}

@@ -14,7 +14,7 @@ public final class Util
 	public static void forceStop()
 	{
 		LogHelper.l.warning("Force stopped!");
-		System.exit(0);
+		System.exit(1);
 	}
 	
 	public static void delay(long ms)

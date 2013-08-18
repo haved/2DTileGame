@@ -5,11 +5,11 @@ import me.engine.lib.InitializationInfo;
 
 public class MainGame
 {
-	public static final String assetLoaction = "bin/assets/";
-	
 	public static void main(String[] args)
 	{
 		InitializationInfo info = new InitializationInfo("me.game.screen.MainMenuScreen");
+		
+		info.content = "bin/Content";
 		
 		info.resolutionX = 1024;
 		info.resolutionY = 640;
