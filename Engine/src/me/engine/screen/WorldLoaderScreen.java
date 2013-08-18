@@ -6,7 +6,7 @@ import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 
-import me.engine.asset.PackLoader;
+import me.depricated.asset.PackLoader;
 import me.engine.core.MainCanvas;
 import me.engine.effect.FlipTransistion;
 import me.engine.lib.LogHelper;

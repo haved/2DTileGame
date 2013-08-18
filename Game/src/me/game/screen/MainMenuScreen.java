@@ -2,8 +2,8 @@ package me.game.screen;
 
 import java.io.File;
 
-import me.engine.asset.AssetPack;
-import me.engine.asset.PackLoader;
+import me.depricated.asset.AssetPack;
+import me.depricated.asset.PackLoader;
 import me.engine.effect.FlipTransistion;
 import me.engine.guiobject.ButtonListener;
 import me.engine.guiobject.GuiObjectButton;

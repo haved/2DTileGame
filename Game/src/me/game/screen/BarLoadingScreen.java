@@ -1,8 +1,7 @@
 package me.game.screen;
 
-import me.engine.asset.Loadable;
+import me.depricated.asset.Loadable;
 import me.engine.screen.LoadingScreen;
-
 import static org.lwjgl.opengl.GL11.*;
 
 public class BarLoadingScreen extends LoadingScreen
