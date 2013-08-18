@@ -25,14 +25,4 @@ public abstract class GuiScreen
 	{
 		
 	}
-
-	public boolean hasLoadingScreen()
-	{
-		return false;
-	}
-	
-	public LoadingScreen getLoadingScreen()
-	{
-		return null;
-	}
 }

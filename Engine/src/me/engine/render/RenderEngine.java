@@ -4,6 +4,9 @@ import static org.lwjgl.opengl.GL11.*;
 
 import java.util.HashMap;
 
+import me.engine.asset.Asset;
+import me.engine.asset.AssetLib;
+import me.engine.asset.TextureAsset;
 import me.engine.math.RectangleI;
 import me.engine.math.Vector3f;
 
@@ -12,7 +15,6 @@ import org.newdawn.slick.opengl.Texture;
 
 public final class RenderEngine
 {
-	private static HashMap<String, Texture> textures = new HashMap<String, Texture>();
 	private static int textureSize;
 	
 	public static void init()
@@ -31,10 +33,13 @@ public final class RenderEngine
 	}
 	
 	public static boolean bind(String name)
-	{
-		if(textures.get(name) != null)
+	{	
+		Asset a = AssetLib.getAsset(name);
+		
+		if(a != null && a instanceof TextureAsset)
 		{
-			return bind(textures.get(name));
+			bind(((TextureAsset) a).getTexture());
+			return true;
 		}
 		return false;
 	}
@@ -53,22 +58,6 @@ public final class RenderEngine
 		catch(Exception e)
 		{
 			return false;
-		}
-	}
-	
-	public static void addTexture(Texture t, String name)
-	{
-		textures.put(name, t);
-	}
-	
-	public static void releaseTexture(String name)
-	{
-		Texture t = textures.get(name);
-		
-		if(t != null)
-		{
-			textures.remove(name);
-			t.release();
 		}
 	}
 	

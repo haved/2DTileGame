@@ -2,7 +2,7 @@ package me.game.world.entity;
 
 import org.lwjgl.input.Keyboard;
 
-import me.engine.core.GameTime;
+import me.engine.lib.GameTime;
 import me.engine.lib.IDHelper;
 import me.engine.lib.Util;
 import me.engine.math.RectangleI;

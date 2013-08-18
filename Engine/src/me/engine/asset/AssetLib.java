@@ -39,4 +39,27 @@ public class AssetLib
 			packs.put(pack.getName(), pack);
 		}
 	}
+
+	public static AssetPack getPack(String name)
+	{
+		return packs.get(name);
+	}
+	
+	public static Asset getAsset(String pack, String assetName)
+	{
+		if(getPack(pack) != null)
+		{
+			return getPack(pack).getAsset(assetName);
+		}
+		
+		return null;
+	}
+	
+	public static Asset getAsset(String path)
+	{
+		String pack = path.split(";")[0];
+		String asset = path.split(";")[1];
+		
+		return getAsset(pack, asset);
+	}
 }

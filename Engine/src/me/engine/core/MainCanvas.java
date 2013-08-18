@@ -5,6 +5,7 @@ import org.newdawn.slick.Color;
 import me.engine.screen.GuiScreen;
 import me.engine.asset.AssetLib;
 import me.engine.lib.DialogHelper;
+import me.engine.lib.GameTime;
 import me.engine.lib.InitializationInfo;
 import me.engine.lib.LogHelper;
 import me.engine.render.RenderEngine;
@@ -122,14 +123,7 @@ public class MainCanvas
 	
 	private void renderScreen()
 	{
-		if(screen.hasLoadingScreen() && screen.getLoadingScreen() != null)
-		{
-			screen.getLoadingScreen().render();
-		}
-		else
-		{
-			screen.render();
-		}
+		screen.render();
 	}
 
 	public void renderFPS()

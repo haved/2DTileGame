@@ -75,6 +75,7 @@ public class AssetPack
 				
 				if(a != null)
 				{
+					a.setFile(f.getAbsolutePath());
 					assets.put(f.getName(), a);
 				}
 			}
@@ -122,5 +123,15 @@ public class AssetPack
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+
+	public Asset getAsset(String name)
+	{
+		return assets.get(name);
+	}
+	
+	public void setAsset(String name, Asset a)
+	{
+		assets.put(name, a);
 	}
 }

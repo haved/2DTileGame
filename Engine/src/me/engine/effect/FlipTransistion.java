@@ -1,7 +1,7 @@
 package me.engine.effect;
 
-import me.engine.core.GameTime;
 import me.engine.core.MainCanvas;
+import me.engine.lib.GameTime;
 import me.engine.render.RenderEngine;
 
 public class FlipTransistion

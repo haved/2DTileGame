@@ -1,21 +1,49 @@
 package me.engine.asset;
 
+import java.io.FileInputStream;
+
+import me.engine.lib.TextureUtil;
+
+import org.newdawn.slick.opengl.Texture;
+
 public class TextureAsset extends Asset
 {
-	public TextureAsset(String file)
-	{
-		super(file);
-	}
+	private Texture texture;
 
 	@Override
 	public void load()
 	{
-		System.out.println("load:" + file);
+		try
+		{
+			texture = TextureUtil.loadTexture("PNG", new FileInputStream(getFile()));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void unload()
 	{
-		System.out.println("unload:" + file);
+		try
+		{
+			texture.release();
+			texture = null;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public Texture getTexture()
+	{
+		return texture;
+	}
+
+	public void setTexture(Texture texture)
+	{
+		this.texture = texture;
 	}
 }

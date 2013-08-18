@@ -1,5 +1,6 @@
 package me.engine.core;
 
+import me.engine.lib.GameTime;
 import me.engine.lib.InitializationInfo;
 import me.engine.lib.LogHelper;
 import me.engine.lib.Util;

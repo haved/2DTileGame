@@ -1,5 +1,6 @@
-package me.engine.core;
+package me.engine.lib;
 
+import me.engine.core.Window;
 import me.engine.math.Vector2i;
 
 import org.lwjgl.input.Mouse;

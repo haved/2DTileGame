@@ -2,7 +2,7 @@ package me.engine.guiobject;
 
 import org.newdawn.slick.Color;
 
-import me.engine.core.Input;
+import me.engine.lib.Input;
 import me.engine.math.RectangleI;
 import me.engine.render.RenderEngine;
 import me.engine.render.TextEngine;

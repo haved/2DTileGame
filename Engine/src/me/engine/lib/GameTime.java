@@ -1,4 +1,4 @@
-package me.engine.core;
+package me.engine.lib;
 
 public final class GameTime
 {

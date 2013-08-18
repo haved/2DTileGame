@@ -1,6 +1,6 @@
 package me.engine.world.entity;
 
-import me.engine.core.GameTime;
+import me.engine.lib.GameTime;
 import me.engine.physics.CollisionPool;
 
 public class DynamicEntity extends MovingEntity

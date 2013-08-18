@@ -1,6 +1,6 @@
 package me.engine.world.entity;
 
-import me.engine.core.GameTime;
+import me.engine.lib.GameTime;
 import me.engine.math.Vector2f;
 import me.engine.physics.Collider;
 import me.engine.physics.CollisionBox;

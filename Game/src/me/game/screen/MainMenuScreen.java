@@ -2,8 +2,6 @@ package me.game.screen;
 
 import java.io.File;
 
-import me.depricated.asset.AssetPack;
-import me.depricated.asset.PackLoader;
 import me.engine.effect.FlipTransistion;
 import me.engine.guiobject.ButtonListener;
 import me.engine.guiobject.GuiObjectButton;
@@ -13,24 +11,17 @@ import me.engine.screen.ContainerGuiScreen;
 import me.engine.screen.LoadingScreen;
 import me.engine.screen.WorldLoaderScreen;
 import me.game.core.MainGame;
+import me.game.core.MyGameType;
 import me.game.world.WorldDebugger;
 import me.game.world.entity.MyPlayerEntity;
 
 public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 {
-	private BarLoadingScreen loading;
-	private PackLoader packs;
 	private GuiObjectButton[] buttons;
 	private FlipTransistion flip;
 	
 	public MainMenuScreen()
 	{
-		packs = new PackLoader();
-		
-		loading = new BarLoadingScreen(packs);
-		
-		packs.addAssetPack(new AssetPack("MainMenu", new File(MainGame.assetLoaction + "MainMenu")));
-		packs.addAssetPack(new AssetPack("Gui", new File(MainGame.assetLoaction + "gui")));
 		initButtons();
 	}
 	
@@ -53,15 +44,11 @@ public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 	public void offFocus()
 	{
 		super.offFocus();
-		
-		packs.unload();
 	}
 	
 	@Override
 	public void update()
 	{
-		if(packs.tryWork()) return;
-		
 		if(flip != null)
 		{
 			if(flip.isDone())
@@ -91,18 +78,6 @@ public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 		}
 	}
 
-	@Override
-	public boolean hasLoadingScreen()
-	{
-		return packs.hasWork();
-	}
-	
-	@Override
-	public LoadingScreen getLoadingScreen()
-	{
-		return loading;
-	}
-
 	public void onButtonPress(GuiObjectButton source)
 	{
 		if(source == buttons[0])
@@ -113,12 +88,7 @@ public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 	
 	private void startNewGame()
 	{
-		PackLoader pack = new PackLoader();
-		pack.addAssetPack(new AssetPack("Tutorial", new File(MainGame.assetLoaction + "worlds/Tutorial")));
-		
-		WorldLoaderScreen screen = new WorldLoaderScreen(pack, "Tutorial;StartingRoom.map",
-														"Start", MyPlayerEntity.class);
-		screen.setWorldInit(new WorldDebugger());
+		WorldLoaderScreen screen = new WorldLoaderScreen(null, "Room.map", MyGameType.class, "Start");
 		
 		canvas.setGuiScreen(screen);
 	}
