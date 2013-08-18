@@ -67,7 +67,7 @@ public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 	{
 		RenderEngine.resetColor();
 		
-		RenderEngine.bind("MainMenu;bg.png");
+		RenderEngine.bind("gui;menu_bg.png");
 		RenderEngine.drawTexture(new RectangleI(0, 0, 1024, 640), new RectangleI(0, 0, 800, 640));
 		
 		renderObjects();

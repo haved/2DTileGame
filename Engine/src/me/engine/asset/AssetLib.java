@@ -33,6 +33,7 @@ public class AssetLib
 	
 	private static void openPack(File f)
 	{
+		LogHelper.l.info("Opening pack:" + f.getAbsolutePath());
 		AssetPack pack = new AssetPack(f);
 		if(pack.openPack())
 		{

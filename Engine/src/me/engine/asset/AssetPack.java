@@ -106,11 +106,21 @@ public class AssetPack
 	
 	private void loadPack()
 	{
+		for(Asset a:assets.values())
+		{
+			a.load();
+		}
+		
 		loaded = true;
 	}
 	
 	private void unloadPack()
 	{
+		for(Asset a:assets.values())
+		{
+			a.unload();
+		}
+		
 		loaded = false;
 	}
 	
