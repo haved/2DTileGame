@@ -1,19 +1,13 @@
 package me.game.screen;
 
-import java.io.File;
-
 import me.engine.effect.FlipTransistion;
 import me.engine.guiobject.ButtonListener;
 import me.engine.guiobject.GuiObjectButton;
 import me.engine.math.RectangleI;
 import me.engine.render.RenderEngine;
 import me.engine.screen.ContainerGuiScreen;
-import me.engine.screen.LoadingScreen;
 import me.engine.screen.WorldLoaderScreen;
-import me.game.core.MainGame;
 import me.game.core.MyGameType;
-import me.game.world.WorldDebugger;
-import me.game.world.entity.MyPlayerEntity;
 
 public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 {
@@ -88,7 +82,7 @@ public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 	
 	private void startNewGame()
 	{
-		WorldLoaderScreen screen = new WorldLoaderScreen(null, "Room.map", MyGameType.class, "Start");
+		WorldLoaderScreen screen = new WorldLoaderScreen("", "Room.map", MyGameType.class, "Start");
 		
 		canvas.setGuiScreen(screen);
 	}

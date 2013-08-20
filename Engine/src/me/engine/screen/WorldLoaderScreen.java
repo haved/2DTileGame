@@ -2,20 +2,21 @@ package me.engine.screen;
 
 import me.engine.core.GameType;
 import me.engine.render.RenderEngine;
+import me.engine.world.WorldLib;
 import me.engine.world.WorldPack;
 
 public class WorldLoaderScreen extends GuiScreen
 {
-	private WorldPack pack;
+	private String packName;
 	private String room;
 	private Class<? extends GameType> gameType;
 	private String point;
 	
 	private int progress;
 	
-	public WorldLoaderScreen(WorldPack pack, String room, Class<? extends GameType> gameType, String point)
+	public WorldLoaderScreen(String packName, String room, Class<? extends GameType> gameType, String point)
 	{
-		this.pack = pack;
+		this.packName = packName;
 		this.room = room;
 		this.gameType = gameType;
 		this.point = point;
@@ -25,8 +26,14 @@ public class WorldLoaderScreen extends GuiScreen
 	{
 		if(progress == 1)
 		{
+			loadWorld();
 			progress = 2;
 		}
+	}
+	
+	public void loadWorld()
+	{
+		WorldLib.changeWorldPack(packName);
 	}
 	
 	public void render()

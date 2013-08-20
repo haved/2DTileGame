@@ -14,6 +14,11 @@ public class WorldPack
 		maps = new HashMap<String, World>();
 	}
 	
+	public boolean openPack()
+	{
+		return true;
+	}
+	
 	public void load()
 	{
 		
@@ -22,5 +27,10 @@ public class WorldPack
 	public void unload()
 	{
 		
+	}
+	
+	public World getWorld(String name)
+	{
+		return maps.get(name);
 	}
 }
