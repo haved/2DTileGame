@@ -3,6 +3,7 @@ package me.engine.core;
 import org.newdawn.slick.Color;
 
 import me.engine.screen.GuiScreen;
+import me.engine.world.WorldLib;
 import me.engine.asset.AssetLib;
 import me.engine.lib.DialogHelper;
 import me.engine.lib.GameTime;
@@ -35,6 +36,7 @@ public class MainCanvas
 		TextEngine.init();
 		
 		AssetLib.load(info.content);
+		WorldLib.load(info.content);
 		
 		trySetGuiScreen(info.defaultGuiScreen);
 	}
