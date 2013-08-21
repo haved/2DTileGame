@@ -30,7 +30,7 @@ public class MyPlayerEntity extends PlayerEntity implements DynamicCollider
 	
 	public MyPlayerEntity()
 	{
-		sprite = new AnimatedSprite("Tutorial;Spritesheet.png");
+		sprite = new AnimatedSprite("core;Spritesheet.png");
 		sprite.texturePos = Util.makeTable(new RectangleI(5 * 32, 0, 32, 3 * 32),
 				new RectangleI(6 * 32, 0, 32, 3 * 32), new RectangleI(7 * 32, 0, 32, 3 * 32),
 				new RectangleI(8 * 32, 0, 32, 3 * 32));

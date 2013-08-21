@@ -91,6 +91,8 @@ public class AssetPack
 			String s = null;
 			while((s = reader.readLine()) != null)
 			{
+				if(s.startsWith("#")) continue;
+				
 				if(s.startsWith("stayLoaded") && s.endsWith("true"))
 					stayLoaded = true;
 			}

@@ -1,5 +1,7 @@
 package me.game.world;
 
+import java.util.ArrayList;
+
 import me.engine.lib.Util;
 import me.engine.math.RectangleI;
 import me.engine.math.Vector2i;
@@ -7,7 +9,6 @@ import me.engine.physics.TileMap;
 import me.engine.render.Sprite;
 import me.engine.world.World;
 import me.engine.world.WorldInit;
-import me.engine.world.entity.PlayerEntity;
 import me.engine.world.layer.SimpleBackground;
 import me.game.world.entity.BoxEntity;
 import me.game.world.entity.BreakableEntity;
@@ -15,10 +16,13 @@ import me.game.world.entity.GrassEntity;
 
 public class WorldDebugger implements WorldInit
 {
-	public void initWorld(PlayerEntity player, World world)
+	public World makeWorld()
 	{
-		player.setID("Player");
-		
+		return new World(2048, 640);
+	}
+	
+	public void initWorld(World world)
+	{		
 		BoxEntity box;
 		
 		for(int j = 0; j < 5; j++)
@@ -50,7 +54,7 @@ public class WorldDebugger implements WorldInit
 		map.setValue(true, 26, map.getMapHeight() - 2);
 		
 		world.addPoint("Start", new Vector2i(200, 200));
-		world.addBackground(new SimpleBackground("Tutorial;bigBG.png", 0.1f, 0.1f, 300, 600));
+		world.addBackground(new SimpleBackground("factory;bigBG.png", 0.1f, 0.1f, 300, 600));
 	}
 	
 	public void addGrass(World world)
@@ -67,5 +71,14 @@ public class WorldDebugger implements WorldInit
 		{
 			world.addEntity(new GrassEntity(i, 640 - (16 + 32), 32, 32, s1));
 		}
+	}
+
+	
+	@Override
+	public ArrayList<String> getPacks()
+	{
+		ArrayList<String> out = new ArrayList<String>();
+		out.add("factory");
+		return out;
 	}
 }

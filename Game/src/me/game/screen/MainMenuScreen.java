@@ -82,7 +82,7 @@ public class MainMenuScreen extends ContainerGuiScreen implements ButtonListener
 	
 	private void startNewGame()
 	{
-		WorldLoaderScreen screen = new WorldLoaderScreen("", "Room.map", MyGameType.class, "Start");
+		WorldLoaderScreen screen = new WorldLoaderScreen("factory", "Room.map", MyGameType.class, "Start");
 		
 		canvas.setGuiScreen(screen);
 	}

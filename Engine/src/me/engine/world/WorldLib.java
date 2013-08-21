@@ -13,7 +13,7 @@ public class WorldLib
 	
 	public static void load(String ContentLoc)
 	{
-		File f = new File(ContentLoc + "/world/");
+		File f = new File(ContentLoc + "/worlds/");
 		
 		if(f.isDirectory())
 		{
@@ -57,5 +57,10 @@ public class WorldLib
 	public static WorldPack getPack(String name)
 	{
 		return packs.get(name);
+	}
+
+	public static World getRoom(String name)
+	{
+		return getPack(current).getWorld(name);
 	}
 }

@@ -26,7 +26,7 @@ public class BoxEntity extends DynamicEntity implements DynamicCollider, IOEleme
 	{
 		if(sprite == null)
 		{
-			sprite = new Sprite("Tutorial;Spritesheet.png", new RectangleI(64, 64, 32, 32));
+			sprite = new Sprite("core;Spritesheet.png", new RectangleI(64, 64, 32, 32));
 		}
 		
 		gravity = 1;

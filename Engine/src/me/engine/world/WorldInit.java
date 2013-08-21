@@ -1,8 +1,12 @@
 package me.engine.world;
 
-import me.engine.world.entity.PlayerEntity;
+import java.util.ArrayList;
 
 public interface WorldInit
 {
-	public void initWorld(PlayerEntity player, World world);
+	public World makeWorld();
+	
+	public void initWorld(World world);
+	
+	public ArrayList<String> getPacks();
 }

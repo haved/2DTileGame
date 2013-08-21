@@ -14,6 +14,8 @@ import me.engine.world.layer.MainLayer;
 
 public class World
 {
+	private ArrayList<String> packs;
+	
 	private ArrayList<Layer> bgs;
 	private ArrayList<Layer> fgs;
 	private MainLayer mainLayer;
@@ -33,6 +35,8 @@ public class World
 	{
 		setXSize(width);
 		setYSize(height);
+		
+		setPacks(new ArrayList<String>());
 		
 		bgs = new ArrayList<Layer>();
 		fgs = new ArrayList<Layer>();
@@ -61,6 +65,14 @@ public class World
 	public void setYSize(int ySize)
 	{
 		this.ySize = ySize;
+	}
+
+	public ArrayList<String> getPacks() {
+		return packs;
+	}
+
+	public void setPacks(ArrayList<String> packs) {
+		this.packs = packs;
 	}
 
 	public void addPlayer(PlayerEntity player)

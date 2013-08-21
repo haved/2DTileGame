@@ -1,9 +1,14 @@
 package me.engine.screen;
 
+import org.lwjgl.input.Keyboard;
+import org.newdawn.slick.Color;
+
 import me.engine.core.GameType;
 import me.engine.render.RenderEngine;
+import me.engine.render.TextEngine;
+import me.engine.world.World;
 import me.engine.world.WorldLib;
-import me.engine.world.WorldPack;
+import me.engine.world.entity.PlayerEntity;
 
 public class WorldLoaderScreen extends GuiScreen
 {
@@ -22,18 +27,45 @@ public class WorldLoaderScreen extends GuiScreen
 		this.point = point;
 	}
 	
-	public void tick()
+	public void update()
 	{
 		if(progress == 1)
 		{
 			loadWorld();
 			progress = 2;
 		}
+		else if(progress == 2)
+		{
+			if(Keyboard.isKeyDown(Keyboard.KEY_RETURN))
+			{
+				openWorld();
+			}
+		}
 	}
 	
-	public void loadWorld()
+	private void loadWorld()
 	{
 		WorldLib.changeWorldPack(packName);
+	}
+	
+	private void openWorld()
+	{
+		try
+		{
+			World w = WorldLib.getRoom(room);
+			
+			if(w != null)
+			{
+				PlayerEntity player = gameType.newInstance().getPlayerEntity().newInstance();
+				player.moveToWorld(w, point);
+				WorldScreen s = new WorldScreen(player);
+				canvas.setGuiScreen(s);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void render()
@@ -48,11 +80,11 @@ public class WorldLoaderScreen extends GuiScreen
 		
 		if(progress == 1)
 		{
-			
+			TextEngine.drawText(1024 - 400, 640 - 100, "Please Wait", Color.black);
 		}
 		else
 		{
-			
+			TextEngine.drawText(1024 - 400, 640 - 100, "Press Enter to continue", Color.black);
 		}
 	}
 }
