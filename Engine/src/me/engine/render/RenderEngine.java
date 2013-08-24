@@ -2,8 +2,6 @@ package me.engine.render;
 
 import static org.lwjgl.opengl.GL11.*;
 
-import java.util.HashMap;
-
 import me.engine.asset.Asset;
 import me.engine.asset.AssetLib;
 import me.engine.asset.TextureAsset;
