@@ -11,7 +11,6 @@ import me.engine.world.World;
 import me.engine.world.WorldInit;
 import me.engine.world.layer.SimpleBackground;
 import me.game.world.entity.BoxEntity;
-import me.game.world.entity.BreakableEntity;
 import me.game.world.entity.GrassEntity;
 
 public class WorldDebugger implements WorldInit
@@ -23,21 +22,19 @@ public class WorldDebugger implements WorldInit
 	
 	public void initWorld(World world)
 	{		
-		BoxEntity box;
+		//makeBoxes(world, 700, 300, 10, 5);
 		
-		for(int j = 0; j < 5; j++)
-		{
-			for(int i = 0; i < 30; i++)
-			{
-				box = new BoxEntity(700 + (i*32), 300 + (j*32), 32, 32);
-				world.addEntity(box);
-			}
-		}
+		BoxEntity box = new BoxEntity(400, 200, 50, 64);
+		world.addEntity(box);
 		
-		world.addEntity(new BoxEntity(250, 32, 128, 128, 100));
+		initTileMap(world);
 		
-		world.addEntity(new BreakableEntity(50, 500, 200, 50, 10000));
-		
+		world.addPoint("Start", new Vector2i(200, 200));
+		world.addBackground(new SimpleBackground("factory;bigBG.png", 0.1f, 0.1f, 300, 600));
+	}
+	
+	public void initTileMap(World world)
+	{
 		TileMap map = world.getMainLayer().getTileMap();
 		map.makeWalls();
 		
@@ -51,10 +48,21 @@ public class WorldDebugger implements WorldInit
 //			map.setValue(true, i, 5 + (i - 13));
 //		}
 		
-		map.setValue(true, 26, map.getMapHeight() - 2);
+//		map.setValue(true, 26, map.getMapHeight() - 2);
+	}
+	
+	public void makeBoxes(World world, int x, int y, int xAmount, int yAmount)
+	{
+		BoxEntity box;
 		
-		world.addPoint("Start", new Vector2i(200, 200));
-		world.addBackground(new SimpleBackground("factory;bigBG.png", 0.1f, 0.1f, 300, 600));
+		for(int j = 0; j < yAmount; j++)
+		{
+			for(int i = 0; i < xAmount; i++)
+			{
+				box = new BoxEntity(x + (i*32), y + (j*32), 32, 32);
+				world.addEntity(box);
+			}
+		}
 	}
 	
 	public void addGrass(World world)

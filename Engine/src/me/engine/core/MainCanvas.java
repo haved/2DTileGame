@@ -21,6 +21,8 @@ public class MainCanvas
 	private int frames;
 	private int time;
 	
+	private long start = -1;
+	
 	public static int resX, resY;
 	
 	private GuiScreen newGuiScreen;
@@ -130,7 +132,14 @@ public class MainCanvas
 
 	public void renderFPS()
 	{
+		
 		if(GameTime.deltaTime() == 0) return;
+		
+		if(GameTime.deltaTime() > 40)
+		{
+			System.out.println((System.currentTimeMillis() - start) + ": " + GameTime.deltaTime());
+			start = System.currentTimeMillis();
+		}
 		
 		time += GameTime.deltaTime();
 		amount += 1000 / GameTime.deltaTime();
