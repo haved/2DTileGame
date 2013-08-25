@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 
+import me.editor.gui.EntityListPane;
 import me.editor.gui.LayerListPane;
 import me.editor.gui.MyMenuBar;
 import me.editor.gui.WorldPanel;
@@ -30,7 +31,9 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	public World world;
 	
 	private WorldPanel worldPanel;
+	private EntityListPane entityList;
 	private LayerListPane layerList;
+	
 	private MyMenuBar bar;
 	
 	public MainFrame(String title)
@@ -58,12 +61,17 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	private void addComponents()
 	{
 		worldPanel = new WorldPanel(this);
+		entityList = new EntityListPane(this);
 		layerList = new LayerListPane(this);
 		
-		JSplitPane center = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		center.add(worldPanel);
-		center.add(layerList);
-		add(center, BorderLayout.CENTER);
+		JSplitPane entityWorldLayer = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		JSplitPane worldLayer = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		worldLayer.add(worldPanel);
+		worldLayer.add(layerList);
+		worldLayer.setResizeWeight(1.0);
+		entityWorldLayer.add(entityList);
+		entityWorldLayer.add(worldLayer);
+		add(entityWorldLayer, BorderLayout.CENTER);
 		
 		bar = new MyMenuBar(this);
 		add(bar, BorderLayout.NORTH);

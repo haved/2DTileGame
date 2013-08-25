@@ -8,6 +8,12 @@ public final class IONames
 	public static final String LAYER_DOWN = "L_DOW";
 	public static final String LAYER_PROP = "L_PROP";
 	
+	public static final String ENTITY_ADD = "E_ADD";
+	public static final String ENTITY_REMOVE = "E_REM";
+	public static final String ENTITY_UP = "E_UP";
+	public static final String ENTITY_DOWN = "E_DOW";
+	public static final String ENTITY_PROP = "E_PROP";
+	
 	public static final String FILE_NEW = "MB_F_NEW";
 	public static final String FILE_OPEN = "MB_F_OPE";
 	public static final String FILE_SAVE = "MB_F_SAV";
