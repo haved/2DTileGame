@@ -2,14 +2,18 @@ package me.editor.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JPanel;
 
 import me.editor.core.IONames;
 import me.editor.core.MainFrame;
+import me.editor.world.Layer;
 
 public class LayerListPane extends JPanel
 {
@@ -17,15 +21,19 @@ public class LayerListPane extends JPanel
 	
 	private MainFrame mainFrame;
 	
+	private JList<String> layerList;
 	private JPanel buttonPanel;
 	private JButton[] buttons;
 	
 	public LayerListPane(MainFrame frame)
-	{
-		this.setMainFrame(frame);
-		
+	{	
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(250, 640));
+		
+		this.setMainFrame(frame);
+		this.layerList = new JList<String>(new String[]{"Test"});
+		add(layerList, BorderLayout.CENTER);
+		
 		initButtons(frame);
 	}
 	
@@ -67,14 +75,34 @@ public class LayerListPane extends JPanel
 		
 		add(buttonPanel, BorderLayout.NORTH);
 	}
-
+	
+	@Override
+	public void paint(Graphics g)
+	{
+		updateLayerList();
+		super.paint(g);
+	}
+	
+	public void updateLayerList()
+	{
+		if(getMainFrame().world != null)
+		{
+			ArrayList<Layer> layers = getMainFrame().world.layers;
+			
+			String[] s = new String[layers.size()];
+			for(int i = 0; i < s.length; i++)
+			{
+				s[i] = layers.get(i).getName();
+			}
+			layerList.setListData(s);
+		}
+	}
 	
 	public MainFrame getMainFrame()
 	{
 		return mainFrame;
 	}
 
-	
 	public void setMainFrame(MainFrame mainFrame)
 	{
 		this.mainFrame = mainFrame;
