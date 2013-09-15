@@ -38,7 +38,7 @@ public class LayerListPane extends JPanel
 	}
 	
 	private void initButtons(ActionListener listener)
-	{
+	{ 
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridLayout(1, 0));
 		
