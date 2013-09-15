@@ -43,7 +43,7 @@ public class WorldPanel extends JPanel implements MouseMotionListener, MouseWhee
 		{
 			frame.world.render((Graphics2D)g, getCamera());
 		}
-		g.drawString("Camera: x=" + cam.scrollX + " y=" + cam.scrollY + " zoom=" + cam.scale * 100 + "%", 5, 10);
+		g.drawString("Camera: x=" + cam.scrollX + " y=" + cam.scrollY + " zoom=" + (int)(cam.scale * 100) + "%", 5, 10);
 	}
 
 	public Camera getCamera()

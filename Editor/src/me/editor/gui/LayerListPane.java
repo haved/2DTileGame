@@ -31,7 +31,7 @@ public class LayerListPane extends JPanel
 		setPreferredSize(new Dimension(250, 640));
 		
 		this.setMainFrame(frame);
-		this.layerList = new JList<String>(new String[]{"Test"});
+		this.layerList = new JList<String>();
 		add(layerList, BorderLayout.CENTER);
 		
 		initButtons(frame);
