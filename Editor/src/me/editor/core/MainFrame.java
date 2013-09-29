@@ -21,6 +21,7 @@ import me.editor.gui.LayerListPane;
 import me.editor.gui.MyMenuBar;
 import me.editor.gui.WorldPanel;
 import me.editor.world.World;
+import me.editor.world.WorldEdit;
 
 public class MainFrame extends JFrame implements EventListener, ActionListener
 {
@@ -29,6 +30,7 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	private JFileChooser fileChooser;
 	
 	public World world;
+	public WorldEdit worldEdit;
 	
 	private WorldPanel worldPanel;
 	private EntityListPane entityList;
