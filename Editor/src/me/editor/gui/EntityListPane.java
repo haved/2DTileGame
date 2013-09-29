@@ -67,14 +67,17 @@ public class EntityListPane extends JPanel
 		
 		add(buttonPanel, BorderLayout.NORTH);
 	}
-
+	
+	public void updateGUI()
+	{
+		
+	}
 	
 	public MainFrame getMainFrame()
 	{
 		return mainFrame;
 	}
 
-	
 	public void setMainFrame(MainFrame mainFrame)
 	{
 		this.mainFrame = mainFrame;

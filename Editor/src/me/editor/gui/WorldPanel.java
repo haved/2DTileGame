@@ -35,6 +35,11 @@ public class WorldPanel extends JPanel implements MouseMotionListener, MouseWhee
 		this.frame = frame;
 	}
 	
+	public void updateGUI()
+	{
+		
+	}
+	
 	@Override
 	public void paint(Graphics g)
 	{
@@ -62,7 +67,7 @@ public class WorldPanel extends JPanel implements MouseMotionListener, MouseWhee
 	{
 		totalScroll = Math.max(totalScroll - e.getWheelRotation(), 1);
 		
-		cam.scale = totalScroll / 10F;
+		cam.scale = totalScroll / 10f;
 		
 		repaint();
 	}
@@ -71,8 +76,8 @@ public class WorldPanel extends JPanel implements MouseMotionListener, MouseWhee
 	@Override
 	public void mouseDragged(MouseEvent e)
 	{
-		cam.scrollX += (prev.getX() - e.getX());
-		cam.scrollY += (prev.getY() - e.getY());
+		cam.scrollX += ((prev.getX() - e.getX()) * (10f/totalScroll));
+		cam.scrollY += ((prev.getY() - e.getY()) * (10f/totalScroll));
 		
 		prev = e.getPoint();
 		

@@ -2,7 +2,6 @@ package me.editor.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -76,11 +75,9 @@ public class LayerListPane extends JPanel
 		add(buttonPanel, BorderLayout.NORTH);
 	}
 	
-	@Override
-	public void paint(Graphics g)
+	public void updateGUI()
 	{
 		updateLayerList();
-		super.paint(g);
 	}
 	
 	public void updateLayerList()

@@ -87,7 +87,7 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	public void setWorld(World newWorld)
 	{
 		this.world = newWorld;
-		repaint();
+		updateGUI();
 	}
 	
 	public void onEvent(String event)
@@ -141,8 +141,6 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 				JOptionPane.showMessageDialog(this, "Failed to read file:" + "\n" + f.getName(), "Could not open", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		
-		repaint();
 	}
 	
 	public void saveFile()
@@ -167,7 +165,7 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 		
 		if(f.exists() & f.isFile())
 		{
-			int out = JOptionPane.showConfirmDialog(this, "Are you sure you want to owerride:" + "\n" + f.getName(), "Save over?", JOptionPane.YES_NO_OPTION);
+			int out = JOptionPane.showConfirmDialog(this, "Are you sure you want to override:" + "\n" + f.getName(), "Save over?", JOptionPane.YES_NO_OPTION);
 			if(out == JOptionPane.NO_OPTION)
 			{
 				return;
@@ -188,6 +186,14 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 			JOptionPane.showMessageDialog(this, "Failed to save to file:" + "\n" + f.getName(), "Could not save", JOptionPane.ERROR_MESSAGE);
 		}
 		
+		repaint();
+	}
+	
+	public void updateGUI()
+	{
+		worldPanel.updateGUI();
+		entityList.updateGUI();
+		layerList.updateGUI();
 		repaint();
 	}
 	
