@@ -29,8 +29,8 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	
 	private JFileChooser fileChooser;
 	
-	public World world;
-	public WorldEdit worldEdit;
+	private World world;
+	private WorldEdit worldEdit;
 	
 	private WorldPanel worldPanel;
 	private EntityListPane entityList;
@@ -45,6 +45,7 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 		fileChooser = new JFileChooser(new File(System.getProperty("user.home")));
 		
 		makeFrame();
+		updateGUI();
 	}
 	
 	private void makeFrame()
@@ -84,12 +85,33 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 		setVisible(true);
 	}
 	
+	public World getWorld()
+	{
+		return world;
+	}
+	
 	public void setWorld(World newWorld)
 	{
 		this.world = newWorld;
+		setWorldEdit(new WorldEdit(this));
 		updateGUI();
 	}
 	
+	public WorldEdit getWorldEdit()
+	{
+		return worldEdit;
+	}
+
+	public void setWorldEdit(WorldEdit worldEdit)
+	{
+		this.worldEdit = worldEdit;
+	}
+	
+	public boolean hasWorld()
+	{
+		return this.getWorld() != null && this.getWorldEdit() != null;
+	}
+
 	public void onEvent(String event)
 	{
 		switch(event)

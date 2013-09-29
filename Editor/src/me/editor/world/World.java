@@ -48,11 +48,11 @@ public class World implements Serializable
 	
 	private void drawLayers(Graphics2D g, Camera cam)
 	{
+		drawColorBg(clone(g), cam);
 		for(Layer l:layers)
 		{
 			l.render(clone(g), cam);
 		}
-		drawColorBg(clone(g), cam);
 	}
 	
 	private void drawColorBg(Graphics2D g, Camera cam)

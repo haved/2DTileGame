@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import me.editor.core.IONames;
 import me.editor.core.MainFrame;
+import me.editor.world.layer.IEntityLayer;
 
 public class EntityListPane extends JPanel
 {
@@ -70,7 +71,22 @@ public class EntityListPane extends JPanel
 	
 	public void updateGUI()
 	{
-		
+		if(mainFrame.hasWorld() && mainFrame.getWorldEdit().getSelectedLayer() instanceof IEntityLayer)
+		{
+			setButtonsEnabled(true);
+		}
+		else
+		{
+			setButtonsEnabled(false);
+		}
+	}
+	
+	public void setButtonsEnabled(boolean enabled)
+	{
+		for(int i = 0; i < buttons.length; i++)
+		{
+			buttons[i].setEnabled(enabled);
+		}
 	}
 	
 	public MainFrame getMainFrame()

@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import me.editor.core.IONames;
 import me.editor.core.MainFrame;
 import me.editor.world.layer.Layer;
 
-public class LayerListPane extends JPanel
+public class LayerListPane extends JPanel implements ListSelectionListener
 {
 	private static final long serialVersionUID = 1759077322549837964L;
 	
@@ -77,14 +79,33 @@ public class LayerListPane extends JPanel
 	
 	public void updateGUI()
 	{
-		updateLayerList();
+		if(mainFrame.hasWorld())
+		{
+			updateLayerList();
+			setGUIEnabled(true);
+		}
+		else
+		{
+			layerList.setListData(new String[0]);
+			setGUIEnabled(false);
+		}
+	}
+	
+	public void setGUIEnabled(boolean enabled)
+	{
+		for(int i = 0; i < buttons.length; i++)
+		{
+			buttons[i].setEnabled(enabled);
+		}
+		
+		layerList.setEnabled(enabled);
 	}
 	
 	public void updateLayerList()
 	{
-		if(getMainFrame().world != null)
+		if(getMainFrame().hasWorld())
 		{
-			ArrayList<Layer> layers = getMainFrame().world.layers;
+			ArrayList<Layer> layers = getMainFrame().getWorld().layers;
 			
 			String[] s = new String[layers.size()];
 			for(int i = 0; i < s.length; i++)
@@ -92,6 +113,7 @@ public class LayerListPane extends JPanel
 				s[i] = layers.get(i).getName();
 			}
 			layerList.setListData(s);
+			layerList.setSelectedIndex(mainFrame.getWorldEdit().selectedLayer);
 		}
 	}
 	
@@ -103,5 +125,19 @@ public class LayerListPane extends JPanel
 	public void setMainFrame(MainFrame mainFrame)
 	{
 		this.mainFrame = mainFrame;
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e)
+	{
+		if(mainFrame.hasWorld())
+		{
+			int index = e.getFirstIndex();
+			if(index != mainFrame.getWorldEdit().selectedLayer)
+			{
+				mainFrame.getWorldEdit().selectedLayer = index;
+				mainFrame.updateGUI();
+			}
+		}
 	}
 }
