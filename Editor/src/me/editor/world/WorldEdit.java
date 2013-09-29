@@ -1,3 +1,4 @@
+/**@author HKrogstie*/
 package me.editor.world;
 
 public class WorldEdit

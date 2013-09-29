@@ -1,3 +1,4 @@
+/**@author HKrogstie*/
 package me.editor.gui;
 
 import java.awt.Dimension;
