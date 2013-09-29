@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import me.editor.core.IONames;
 import me.editor.core.MainFrame;
-import me.editor.world.Layer;
+import me.editor.world.layer.Layer;
 
 public class LayerListPane extends JPanel
 {

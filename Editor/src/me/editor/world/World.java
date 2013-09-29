@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import me.editor.core.Camera;
+import me.editor.world.layer.Layer;
+import me.editor.world.layer.MainLayer;
 
 public class World implements Serializable
 {
