@@ -11,11 +11,13 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 
+import me.editor.dialog.NewLayerDialog;
 import me.editor.gui.EntityListPane;
 import me.editor.gui.LayerListPane;
 import me.editor.gui.MyMenuBar;
@@ -31,6 +33,8 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	
 	private World world;
 	private WorldEdit worldEdit;
+	
+	private JDialog dialog;
 	
 	private WorldPanel worldPanel;
 	private EntityListPane entityList;
@@ -107,6 +111,12 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 		this.worldEdit = worldEdit;
 	}
 	
+	public void openDialog(JDialog dialog)
+	{
+		this.dialog = dialog;
+		dialog.setVisible(true);
+	}
+	
 	public boolean hasWorld()
 	{
 		return this.getWorld() != null && this.getWorldEdit() != null;
@@ -116,6 +126,7 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	{
 		switch(event)
 		{
+		case IONames.LAYER_ADD: new NewLayerDialog(this).setVisible(true); return;
 		case IONames.FILE_NEW: newFile(); return;
 		case IONames.FILE_OPEN: openFile(); return;
 		case IONames.FILE_SAVE: saveFile(); return;

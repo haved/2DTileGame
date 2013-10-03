@@ -32,7 +32,7 @@ public class NewLayerDialog extends JDialog implements ActionListener
 		pack();
 		setResizable(false);
 		
-		setVisible(true);
+		setLocationRelativeTo(frame);
 	}
 	
 	private void makeComponents()
@@ -51,7 +51,7 @@ public class NewLayerDialog extends JDialog implements ActionListener
 		
 		JPanel buttonPanel = new JPanel(new BorderLayout());
 		buttonPanel.add(cancel, BorderLayout.WEST);
-		buttonPanel.add(cancel, BorderLayout.EAST);
+		buttonPanel.add(ok, BorderLayout.EAST);
 		
 		add(buttonPanel, BorderLayout.SOUTH);
 	}
@@ -71,6 +71,15 @@ public class NewLayerDialog extends JDialog implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		
+		if(e.getSource() == ok && frame.hasWorld())
+		{
+			frame.getWorld().layers.add(LayerTypes.values()[layers.getSelectedIndex()].newInstance());
+			frame.updateGUI();
+			setVisible(false);
+		}
+		else if(e.getSource() == cancel)
+		{
+			setVisible(false);
+		}
 	}
 }

@@ -47,6 +47,7 @@ public class WorldPanel extends JPanel implements MouseMotionListener, MouseList
 	public void paint(Graphics g)
 	{
 		super.paint(g);
+		
 		if(frame.getWorld() != null)
 		{
 			frame.getWorld().render((Graphics2D)g, getCamera());
