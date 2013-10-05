@@ -113,8 +113,15 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	
 	public void openDialog(JDialog dialog)
 	{
+		if(this.dialog != null)
+		{
+			this.dialog.setVisible(false);
+		}
 		this.dialog = dialog;
-		dialog.setVisible(true);
+		if(this.dialog != null)
+		{
+			this.dialog.setVisible(true);
+		}
 	}
 	
 	public boolean hasWorld()
@@ -126,7 +133,7 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 	{
 		switch(event)
 		{
-		case IONames.LAYER_ADD: new NewLayerDialog(this).setVisible(true); return;
+		case IONames.LAYER_ADD: openDialog(new NewLayerDialog(this)); return;
 		case IONames.FILE_NEW: newFile(); return;
 		case IONames.FILE_OPEN: openFile(); return;
 		case IONames.FILE_SAVE: saveFile(); return;
