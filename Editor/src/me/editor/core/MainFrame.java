@@ -24,6 +24,8 @@ import me.editor.gui.MyMenuBar;
 import me.editor.gui.WorldPanel;
 import me.editor.world.World;
 import me.editor.world.WorldEdit;
+import me.editor.world.layer.Layer;
+import me.editor.world.layer.MainLayer;
 
 public class MainFrame extends JFrame implements EventListener, ActionListener
 {
@@ -134,11 +136,32 @@ public class MainFrame extends JFrame implements EventListener, ActionListener
 		switch(event)
 		{
 		case IONames.LAYER_ADD: openDialog(new NewLayerDialog(this)); return;
+		case IONames.LAYER_REMOVE: removeLayer(); return;
 		case IONames.FILE_NEW: newFile(); return;
 		case IONames.FILE_OPEN: openFile(); return;
 		case IONames.FILE_SAVE: saveFile(); return;
 		case IONames.FILE_EXIT: System.exit(0); return;
 		default: return;
+		}
+	}
+	
+	private void removeLayer()
+	{
+		if(hasWorld())
+		{
+			Layer l = getWorldEdit().getSelectedLayer();
+			if(l != null && l instanceof MainLayer == false)
+			{
+				int i = JOptionPane.showConfirmDialog(this, "Are you sure you want to remove the layer?", "Remove Layer?", JOptionPane.OK_CANCEL_OPTION);
+				
+				if(i == 0)
+				{
+					getWorld().layers.remove(getWorldEdit().selectedLayerIndex);
+					getWorldEdit().selectedLayerIndex = -1;
+					
+					updateGUI();
+				}
+			}
 		}
 	}
 	

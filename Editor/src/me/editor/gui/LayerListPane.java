@@ -4,35 +4,31 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import me.editor.core.IONames;
 import me.editor.core.MainFrame;
-import me.editor.world.layer.Layer;
 
-public class LayerListPane extends JPanel implements ListSelectionListener
+public class LayerListPane extends JPanel implements ListController
 {
 	private static final long serialVersionUID = 1759077322549837964L;
 	
 	private MainFrame mainFrame;
 	
-	private JList<String> layerList;
+	private HList layerList;
 	private JPanel buttonPanel;
 	private JButton[] buttons;
 	
 	public LayerListPane(MainFrame frame)
-	{	
+	{
+		this.setMainFrame(frame);
+		
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(250, 640));
 		
-		this.setMainFrame(frame);
-		this.layerList = new JList<String>();
+		layerList = new HList(this);
 		add(layerList, BorderLayout.CENTER);
 		
 		initButtons(frame);
@@ -81,12 +77,10 @@ public class LayerListPane extends JPanel implements ListSelectionListener
 	{
 		if(mainFrame.hasWorld())
 		{
-			updateLayerList();
 			setGUIEnabled(true);
 		}
 		else
 		{
-			layerList.setListData(new String[0]);
 			setGUIEnabled(false);
 		}
 	}
@@ -101,22 +95,6 @@ public class LayerListPane extends JPanel implements ListSelectionListener
 		layerList.setEnabled(enabled);
 	}
 	
-	public void updateLayerList()
-	{
-		if(getMainFrame().hasWorld())
-		{
-			ArrayList<Layer> layers = getMainFrame().getWorld().layers;
-			
-			String[] s = new String[layers.size()];
-			for(int i = 0; i < s.length; i++)
-			{
-				s[i] = layers.get(i).getName();
-			}
-			layerList.setListData(s);
-			layerList.setSelectedIndex(mainFrame.getWorldEdit().selectedLayer);
-		}
-	}
-	
 	public MainFrame getMainFrame()
 	{
 		return mainFrame;
@@ -128,16 +106,38 @@ public class LayerListPane extends JPanel implements ListSelectionListener
 	}
 
 	@Override
-	public void valueChanged(ListSelectionEvent e)
+	public int getSelectedElement()
 	{
-		if(mainFrame.hasWorld())
+		if(getMainFrame().hasWorld())
 		{
-			int index = e.getFirstIndex();
-			if(index != mainFrame.getWorldEdit().selectedLayer)
-			{
-				mainFrame.getWorldEdit().selectedLayer = index;
-				mainFrame.updateGUI();
-			}
+			return getMainFrame().getWorldEdit().selectedLayerIndex;
+		}
+		else
+		{
+			return -1;
+		}
+	}
+
+	@Override
+	public Object[] getElements()
+	{
+		if(getMainFrame().hasWorld())
+		{
+			return getMainFrame().getWorld().layers.toArray();
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	@Override
+	public void onSelectionChange(int newIndex)
+	{
+		if(getMainFrame().hasWorld())
+		{
+			getMainFrame().getWorldEdit().selectedLayerIndex = newIndex;
+			getMainFrame().updateGUI();
 		}
 	}
 }

@@ -3,12 +3,12 @@ package me.editor.world;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import me.editor.core.Camera;
+import me.editor.core.Util;
 import me.editor.world.layer.Layer;
 import me.editor.world.layer.MainLayer;
 
@@ -40,18 +40,15 @@ public class World implements Serializable
 	public void render(Graphics2D g, Camera cam)
 	{
 		g.scale(cam.scale, cam.scale);
-		
 		drawLayers(g, cam);
-		
-		resetTransform(g);
 	}
 	
 	private void drawLayers(Graphics2D g, Camera cam)
 	{
-		drawColorBg(clone(g), cam);
+		drawColorBg(Util.cloneGraphics(g), cam);
 		for(Layer l:layers)
 		{
-			l.render(clone(g), cam);
+			l.render(Util.cloneGraphics(g), cam);
 		}
 	}
 	
@@ -63,15 +60,5 @@ public class World implements Serializable
 		g.fillRect(0, 0, width, height);
 		g.setColor(Color.BLACK);
 		g.drawRect(-1, -1, width + 1, height + 1);
-	}
-	
-	private static Graphics2D clone(Graphics2D g)
-	{
-		return (Graphics2D) g.create();
-	}
-	
-	private static void resetTransform(Graphics2D g)
-	{
-		g.setTransform(new AffineTransform(1, 0, 0, 1, 0, 0));
 	}
 }

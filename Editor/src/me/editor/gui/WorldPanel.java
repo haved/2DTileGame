@@ -3,7 +3,6 @@ package me.editor.gui;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -14,6 +13,7 @@ import javax.swing.JPanel;
 
 import me.editor.core.Camera;
 import me.editor.core.MainFrame;
+import me.editor.core.Util;
 
 public class WorldPanel extends JPanel implements MouseMotionListener, MouseListener, MouseWheelListener
 {
@@ -47,10 +47,9 @@ public class WorldPanel extends JPanel implements MouseMotionListener, MouseList
 	public void paint(Graphics g)
 	{
 		super.paint(g);
-		
 		if(frame.getWorld() != null)
 		{
-			frame.getWorld().render((Graphics2D)g, getCamera());
+			frame.getWorld().render(Util.cloneGraphics(g), getCamera());
 		}
 		g.drawString("Camera: x=" + cam.scrollX + " y=" + cam.scrollY + " zoom=" + (int)(cam.scale * 100) + "%", 5, 10);
 	}

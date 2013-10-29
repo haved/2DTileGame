@@ -12,12 +12,13 @@ import me.editor.core.IONames;
 import me.editor.core.MainFrame;
 import me.editor.world.layer.IEntityLayer;
 
-public class EntityListPane extends JPanel
+public class EntityListPane extends JPanel implements ListController
 {
 	private static final long serialVersionUID = 1759077322549837964L;
 	
 	private MainFrame mainFrame;
 	
+	private HList entityList;
 	private JPanel buttonPanel;
 	private JButton[] buttons;
 	
@@ -27,6 +28,10 @@ public class EntityListPane extends JPanel
 		
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(250, 640));
+		
+		entityList = new HList(this);
+		add(entityList, BorderLayout.CENTER);
+		
 		initButtons(frame);
 	}
 	
@@ -97,5 +102,42 @@ public class EntityListPane extends JPanel
 	public void setMainFrame(MainFrame mainFrame)
 	{
 		this.mainFrame = mainFrame;
+	}
+
+	
+	@Override
+	public int getSelectedElement()
+	{
+		if(getMainFrame().hasWorld())
+		{
+			return getMainFrame().getWorldEdit().selectedLayerIndex;
+		}
+		else
+		{
+			return -1;
+		}
+	}
+
+	@Override
+	public Object[] getElements()
+	{
+		if(getMainFrame().hasWorld())
+		{
+			return getMainFrame().getWorld().layers.toArray();
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	@Override
+	public void onSelectionChange(int newIndex)
+	{
+		if(getMainFrame().hasWorld())
+		{
+			getMainFrame().getWorldEdit().selectedLayerIndex = newIndex;
+			getMainFrame().updateGUI();
+		}
 	}
 }

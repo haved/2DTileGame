@@ -1,3 +1,4 @@
+/**@author HKrogstie*/
 package me.editor.world.layer;
 
 import java.awt.Graphics2D;
@@ -12,4 +13,9 @@ public abstract class Layer
 	}
 	
 	public abstract String getName();
+	
+	public String toString()
+	{
+		return getName();
+	}
 }

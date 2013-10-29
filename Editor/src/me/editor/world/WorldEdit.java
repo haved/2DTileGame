@@ -8,7 +8,7 @@ public class WorldEdit
 {
 	private MainFrame frame;
 	
-	public int selectedLayer;
+	public int selectedLayerIndex;
 	
 	public WorldEdit(MainFrame frame)
 	{
@@ -19,7 +19,7 @@ public class WorldEdit
 	{
 		if(frame.getWorld() != null && frame.getWorld().layers != null)
 		{
-			return frame.getWorld().layers.get(selectedLayer);
+			return frame.getWorld().layers.get(selectedLayerIndex);
 		}
 		
 		return null; 
