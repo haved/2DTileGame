@@ -21,7 +21,7 @@ import me.engine.world.layer.MainLayer;
 public class MyPlayerEntity extends PlayerEntity implements DynamicCollider
 {
 	private AnimatedSprite sprite;
-	public float jumpForce = 550;
+	public float jumpForce;
 	public int speed = 300;
 	public float accel = 10;
 	
@@ -36,9 +36,12 @@ public class MyPlayerEntity extends PlayerEntity implements DynamicCollider
 				new RectangleI(8 * 32, 0, 32, 3 * 32));
 		
 		setBounds(0, 0, 32, 32 * 3);
-		mass = 40;
-		jumpForce = jumpForce * mass;
+		mass = 10;
 		gravity = 1;
+		jumpForce = 550 * mass;
+		
+		hardness = 0.95f;
+		
 		tileColliding = true;
 		boxColliding = true;
 	}

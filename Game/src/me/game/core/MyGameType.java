@@ -11,5 +11,4 @@ public class MyGameType extends GameType
 	{
 		return MyPlayerEntity.class;
 	}
-
 }

@@ -30,7 +30,6 @@ public class BoxEntity extends DynamicEntity implements DynamicCollider, IOEleme
 		}
 		
 		gravity = 1;
-		bounce = 1f;
 		mass = 4;
 		hardness = 1f;
 		airFric = 0.2f;

@@ -35,7 +35,6 @@ public class GrassCutterEntity extends DynamicEntity implements Collider, Trigge
 	private void setUpVariables()
 	{
 		gravity = 1;
-		bounce = 0.1f;
 		mass = 7;
 		hardness = 0.75f;
 		airFric = 2;

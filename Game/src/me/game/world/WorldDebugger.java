@@ -9,7 +9,7 @@ import me.engine.physics.TileMap;
 import me.engine.render.Sprite;
 import me.engine.world.World;
 import me.engine.world.WorldInit;
-import me.engine.world.layer.SimpleBackground;
+import me.engine.world.layer.SimpleLayer;
 import me.game.world.entity.BoxEntity;
 import me.game.world.entity.GrassEntity;
 
@@ -24,13 +24,16 @@ public class WorldDebugger implements WorldInit
 	{		
 		//makeBoxes(world, 700, 300, 10, 5);
 		
-		BoxEntity box = new BoxEntity(400, 200, 50, 64);
+		BoxEntity box = new BoxEntity(400, 500, 50, 64);
+		box.setGravity(0.3f);
+		box.setMass(12);
+		box.setHardness(0.9f);
 		world.addEntity(box);
 		
 		initTileMap(world);
 		
 		world.addPoint("Start", new Vector2i(200, 200));
-		world.addBackground(new SimpleBackground("factory;bigBG.png", 0.1f, 0.1f, 300, 600));
+		world.addBackground(new SimpleLayer("factory;bigBG.png", 0.1f, 0.1f, 300, 600));
 	}
 	
 	public void initTileMap(World world)

@@ -7,14 +7,14 @@ import me.engine.physics.CollisionBox;
 import me.engine.physics.CollisionPool;
 import me.engine.physics.CollisionShape;
 import me.engine.physics.DynamicCollider;
+import me.engine.physics.PhysicsUtil;
 import me.engine.world.World;
 import me.engine.world.layer.DynamicLayer;
 
 public class MovingEntity extends Entity
 {
 	protected float hardness = 0.9f;
-	
-	protected float bounce = 0.05f;
+	protected float bounce = 0.1f;
 	
 	protected boolean boxColliding;
 	protected boolean tileColliding;
@@ -89,7 +89,7 @@ public class MovingEntity extends Entity
 	
 	public float getXMoment()
 	{
-		return mass * xSpeed;
+		return PhysicsUtil.getMoment(getMass(), getXSpeed());
 	}
 	
 	public float getYMoment()
@@ -99,32 +99,32 @@ public class MovingEntity extends Entity
 	
 	public void setXMoment(float xMoment)
 	{
-		setXSpeed(xMoment / getMass());
+		setXSpeed(PhysicsUtil.getSpeed(getMass(), xMoment));
 	}
 	
 	public void setYMoment(float yMoment)
 	{
-		setYSpeed(yMoment / getMass());
+		setYSpeed(PhysicsUtil.getSpeed(getMass(), yMoment));
 	}
 	
 	public void addXMoment(float xMoment)
 	{
-		addXSpeed(xMoment / getMass());
+		addXSpeed(PhysicsUtil.getSpeed(getMass(), xMoment));
 	}
 	
 	public void addYMoment(float yMoment)
 	{
-		addYSpeed(yMoment / getMass());
+		addYSpeed(PhysicsUtil.getSpeed(getMass(), yMoment));
 	}
 	
 	public void sendXMoment(float xMoment)
 	{
-		addXMoment(xMoment * getHardness());
+		addXMoment(PhysicsUtil.getTransMoment(xMoment, getHardness()));
 	}
 	
 	public void sendYMoment(float yMoment)
 	{
-		addYMoment(yMoment * getHardness());
+		addYMoment(PhysicsUtil.getTransMoment(yMoment, getHardness()));
 	}
 	
 	@Override

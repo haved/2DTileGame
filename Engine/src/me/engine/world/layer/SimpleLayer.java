@@ -5,7 +5,7 @@ import me.engine.math.RectangleI;
 import me.engine.render.RenderEngine;
 import me.engine.world.World;
 
-public class SimpleBackground implements Layer
+public class SimpleLayer implements Layer
 {
 	private String location;
 	private float scrollX;
@@ -13,14 +13,14 @@ public class SimpleBackground implements Layer
 	private int xMove;
 	private int yMove;
 	
-	public SimpleBackground(String location, float scrollX, float scrollY)
+	public SimpleLayer(String location, float scrollX, float scrollY)
 	{
 		this.location = location;
 		this.scrollX = scrollX;
 		this.scrollY = scrollY;
 	}
 	
-	public SimpleBackground(String location, float scrollX, float scrollY, int xMove, int yMove)
+	public SimpleLayer(String location, float scrollX, float scrollY, int xMove, int yMove)
 	{
 		this(location, scrollX, scrollY);
 		this.xMove = xMove;
